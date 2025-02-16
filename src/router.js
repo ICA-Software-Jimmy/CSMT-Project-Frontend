@@ -1,49 +1,66 @@
-import { createRouter, createWebHistory } from "vue-router";
-import login from './components/login/login.vue';
-import main from './components/Main/MainPage.vue';
-import case_all from './components/Main/Home/case-all.vue';
-import account_management from './components/Main/Home/account-management.vue';
-import dashboard from './components/Main/Home/dashboard.vue';
-import service_record from './components/Main/Home/service-record.vue';
+import { createRouter, createWebHistory } from 'vue-router';
+
+import Login from '../src/components/login/login.vue';
+import MainPage from './components/Main/MainPage.vue';
+import AccountManagement from '../src/components/Main/Home/account-management/account-management.vue';
+import ReportAll from '../src/components/Main/Home/report-management/report-all.vue';
+import ServiceRecord from '../src/components/Main/Home/service-record/service-record.vue';
+import Dashboard from "../src/components/Main/Home/dashboard/dashboard.vue";
+import UnassignedCases from './components/Main/Home/unassigned-cases/unassigned-cases.vue';
 
 const routes = [
     {
         path: '/',
-        redirect: '/login'
+        name: '/',
+        component: Login
     },
     {
         path: '/login',
-        name: 'login',
-        component: login
+        name: 'Login',
+        component: Login
     },
     {
-        path: '/main',
-        name: 'main',
-        component: main,
-        children:[
+        path:'/MainPage',
+        name:'MainPage', 
+        component: MainPage,
+        children: [
             {
-                path: '/main/cases',
-                component: case_all
+                path: 'AccountManagement',
+                name: 'AccountManagement',
+                component:AccountManagement
             },
             {
-                path:'/main/account',
-                component: account_management
+                path: 'ReportAll',
+                name: 'ReportAll',
+                component:ReportAll
             },
             {
-                path:'/main/dashboard',
-                component: dashboard
+                path: 'ServiceRecord',
+                name: 'ServiceRecord',
+                component:ServiceRecord
             },
             {
-                path:'/main/service',
-                component: service_record
+                path: 'Dashboard',
+                name: 'Dashboard',
+                component:Dashboard
+            },
+            {
+                path: 'UnassignedCases',
+                name: 'UnassignedCases',
+                component:UnassignedCases
+
             }
         ]
+        
     }
-];
 
+]
+
+// 創建路由器實例
 const router = createRouter({
-    history: createWebHistory(),
-    routes // Changed from routers to routes
+	history: createWebHistory(import.meta.env.BASE_URL),
+	routes, 
 });
 
-export default router;
+
+export default router; // 將 router 匯出以便其他文件使用

@@ -39,24 +39,32 @@
 <script setup>
 import {ref} from 'vue';
 import axios from 'axios';
+import { useRouter } from 'vue-router';
 const employee_id = ref('');
 const employee_password = ref('');
 
 const login_submit = () => {
     console.log(employee_id.value);
     console.log(employee_password.value);
+    const router = useRouter();
 
-    axios.post("https://localhost:7239/api/Auth/Login", {
+    axios.post("https://localhost:7131/api/Member/Login", {
         username: employee_id.value,
         password: employee_password.value
     })
     .then((res) => {
-        console.log(res);
-        // Handle successful login (e.g., redirect, store token, etc.)
+        if(res.status == 200){
+            console.log("pass");
+            window.location.href = '/MainPage/Dashboard';
+            
+            sessionStorage.setItem("userName", employee_id.value);
+        }else{
+            console.log("err");
+        }
+       
     })
     .catch((err) => {
         console.log(err);
-        // Handle login error (e.g., show error message)
     });
 }
 

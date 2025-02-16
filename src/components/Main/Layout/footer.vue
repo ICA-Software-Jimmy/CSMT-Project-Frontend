@@ -19,7 +19,7 @@
     color: white;
     height: 50px;
     border-radius: 5px;
-    width: 1080px;
+    width: 100%;
     padding: 20px; 
 
 }
