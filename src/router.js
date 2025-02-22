@@ -6,7 +6,9 @@ import AccountManagement from '../src/components/Main/Home/account-management/ac
 import ReportAll from '../src/components/Main/Home/report-management/report-all.vue';
 import ServiceRecord from '../src/components/Main/Home/service-record/service-record.vue';
 import Dashboard from "../src/components/Main/Home/dashboard/dashboard.vue";
-import UnassignedCases from './components/Main/Home/unassigned-cases/unassigned-cases.vue';
+import UnassignedCasesCollection from './components/Main/Home/unassigned-cases/unassigned-case-collection.vue';
+import AllCase from './components/Main/Home/all-case/case-collection.vue'
+
 
 const routes = [
     {
@@ -24,6 +26,11 @@ const routes = [
         name:'MainPage', 
         component: MainPage,
         children: [
+            {
+                path: 'AllCase',
+                name: 'AllCase',
+                component:AllCase
+            },
             {
                 path: 'AccountManagement',
                 name: 'AccountManagement',
@@ -45,9 +52,9 @@ const routes = [
                 component:Dashboard
             },
             {
-                path: 'UnassignedCases',
-                name: 'UnassignedCases',
-                component:UnassignedCases
+                path: 'UnassignedCasesCollection',
+                name: 'UnassignedCasesCollection',
+                component:UnassignedCasesCollection
 
             }
         ]

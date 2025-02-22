@@ -1,9 +1,6 @@
 <template>
-  <caseRegister />
-  <br />
-  <br />
   <div>
-    <table id="example" class="table table-striped">
+    <table id="unassigned-case-box" class="table table-striped">
       <thead>
         <tr>
           <th class="text-start">個案編號</th>
@@ -56,7 +53,6 @@
 <script setup>
 import { ref, onMounted, watchEffect, nextTick } from "vue";
 import $ from "jquery";
-import caseRegister from "./case-register.vue";
 import "datatables.net-bs5/css/dataTables.bootstrap5.min.css";
 import "datatables.net-bs5";
 import "datatables.net-select";
@@ -77,7 +73,7 @@ const initializeDataTable = () => {
     if (dataTableInstance) {
       dataTableInstance.destroy(); // 避免重複初始化
     }
-    dataTableInstance = $("#example").DataTable({
+    dataTableInstance = $("#unassigned-case-box").DataTable({
       paging: true, // 分頁
       lengthMenu: [5, 10, 25, 50], // 可選每頁筆數
       pageLength: 5, // 預設每頁 5 筆
