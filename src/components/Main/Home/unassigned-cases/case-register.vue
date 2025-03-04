@@ -160,9 +160,9 @@
                         <label for="validationCustom05" class="form-label">指派負責社工員</label>
                         <select class="form-select" id="inputGroupSelect01">
                             <option selected>請選擇</option>
-                            <option value="1"><span>員工編號:A234</span> 張社工</option>
-                            <option value="2"><span>員工編號:B456</span> 李社工</option>
-                            <option value="3"><span>員工編號:C789</span> 王社工</option>
+                            <option value="1">員工編號:A234 張社工</option>
+                            <option value="2">員工編號:B456 李社工</option>
+                            <option value="3">員工編號:C789 王社工</option>
                         </select>
                     </div>
                     </form>

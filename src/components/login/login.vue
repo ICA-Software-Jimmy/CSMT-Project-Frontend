@@ -48,15 +48,17 @@ const login_submit = () => {
     console.log(employee_password.value);
     const router = useRouter();
 
-    axios.post("https://localhost:7131/api/Member/Login", {
+    const apiUrl = import.meta.env.VITE_APP_API_URL;
+    console.log("API URL:", apiUrl); 
+    axios.post(`${apiUrl}/Auth/Login`, {
         username: employee_id.value,
         password: employee_password.value
     })
     .then((res) => {
         if(res.status == 200){
-            console.log("pass");
-            window.location.href = '/MainPage/Dashboard';
-            
+        window.location.href = '/MainPage/Dashboard';
+            console.log("Login successful");
+            //router.push('/MainPage/Dashboard');
             sessionStorage.setItem("userName", employee_id.value);
         }else{
             console.log("err");
